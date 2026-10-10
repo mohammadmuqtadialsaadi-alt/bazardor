@@ -1,26 +1,105 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap');
+
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --green: #008b45;
+  --green-dark: #006b35;
+  --green-light: #e9f7ee;
+  --page-bg: #f8faf8;
+  --text: #202923;
+  --muted: #718078;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--page-bg);
+  color: var(--text);
+  font-family: "Hind Siliguri", Arial, sans-serif;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container-main {
+  width: min(1152px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+.green-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 9px;
+  padding: 11px 20px;
+  background: var(--green);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.green-button:hover {
+  background: var(--green-dark);
+}
+
+.white-card {
+  border: 1px solid #e5ebe6;
+  border-radius: 14px;
+  background: white;
+  padding: 20px;
+}
+
+.section-heading {
+  font-size: clamp(23px, 3vw, 30px);
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+@keyframes ticker {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker 35s linear infinite;
+}
+
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+@media (max-width: 640px) {
+  .container-main {
+    width: calc(100% - 24px);
+  }
 }
